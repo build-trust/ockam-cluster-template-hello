@@ -2,6 +2,7 @@ FROM cgr.dev/chainguard/python:latest-dev AS dev
 
 WORKDIR /app
 
+USER root
 RUN python -m venv venv
 ENV PATH="/app/venv/bin:$PATH"
 COPY wheels/ /app/wheels/
