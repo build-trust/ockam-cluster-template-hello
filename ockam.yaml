@@ -1,0 +1,12 @@
+pods:
+  - name: main
+    containers:
+      - name: app
+        ockam-ticket:
+          relay: app
+        image: main
+        imagePullPolicy: Always
+        args: ["9000"]
+    portals:
+      outlets:
+        - to: 9000
