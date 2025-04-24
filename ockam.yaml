@@ -4,7 +4,7 @@ pods:
     containers:
       - name: app
         image: main
-        args: ["9000"]
+        args: ["127.0.0.1:9000"]
     portals:
       outlets:
         - to: localhost:9000
