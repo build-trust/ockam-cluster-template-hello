@@ -1,29 +1,18 @@
-import os
-import sys
-
-from ockam import Agent, Model, Node, info
+from ockam import Agent, Model, Node
+from sys import argv
 
 
 async def main(node):
     agent = await Agent.start(
         node=node,
-        model=Model(name="bedrock/anthropic.claude-3-5-sonnet-20241022-v2:0"),
+        model=Model("bedrock/anthropic.claude-3-5-sonnet-20241022-v2:0"),
         instructions="""
             You are Henry, an expert legal assistant.
             You have in-depth knowledge of United States corporate law.
         """,
     )
 
-    await agent.repl(listen_address=f"127.0.0.1:{sys.argv[1]}")
-
-    # Wait for CTRL+C
-    try:
-        await node.stop_on_sigint()
-    except asyncio.exceptions.CancelledError:
-        pass
+    await agent.repl(argv[1])
 
 
-if __name__ == "__main__":
-    node_name = f"{os.environ['CLUSTER']}-{os.environ['ZONE']}-{os.environ['NODE']}"
-    print(f"Starting node {node_name}", flush=True)
-    Node.start(main, name=node_name, ticket=os.environ['ENROLLMENT_TICKET'])
+Node.run(main)
