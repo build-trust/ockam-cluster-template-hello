@@ -7,7 +7,7 @@ from ockam import Agent, Model, Node, info
 async def main(node):
     agent = await Agent.start(
         node=node,
-        model=Model(name="bedrock/amazon.titan-text-lite-v1"),
+        model=Model(name="bedrock/anthropic.claude-3-5-sonnet-20241022-v2:0"),
         instructions="""
             You are Henry, an expert legal assistant.
             You have in-depth knowledge of United States corporate law.
