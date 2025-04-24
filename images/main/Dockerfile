@@ -2,9 +2,8 @@ FROM cgr.dev/chainguard/python:latest-dev AS dev
 
 WORKDIR /app
 
-USER root
-RUN python -m venv venv
-ENV PATH="/app/venv/bin:$PATH"
+RUN python -m venv /tmp/venv
+ENV PATH="/tmp/venv/bin:$PATH"
 COPY wheels/ /app/wheels/
 RUN arch=$(uname -m) && \
     if [ "$arch" = "aarch64" ]; then \
@@ -18,7 +17,7 @@ FROM cgr.dev/chainguard/python:latest
 WORKDIR /app
 
 COPY main.py main.py
-COPY --from=dev /app/venv /app/venv
+COPY --from=dev /tmp/venv /app/venv
 ENV PATH="/app/venv/bin:$PATH"
 
 ENTRYPOINT ["python", "main.py"]
