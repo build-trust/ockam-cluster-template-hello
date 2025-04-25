@@ -1,0 +1,2 @@
+--extra-index-url https://build-trust.github.io/wheels/simple
+ockam
