@@ -15,4 +15,4 @@ async def main(node):
     await agent.repl(argv[1])
 
 
-Node.start(main)
+Node.run(main)
