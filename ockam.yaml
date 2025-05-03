@@ -2,7 +2,7 @@ name: hello
 pods:
   - name: main-pod
     containers:
-      - name: main-container
+      - name: main
         image: main
         args: [localhost:9000]
     portals:
