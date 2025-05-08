@@ -1,10 +1,10 @@
-FROM cgr.dev/chainguard/python:latest-dev AS dev
+FROM ghcr.io/build-trust/ockam-python-dev:latest AS dev
 
 ENV PATH="/tmp/venv/bin:$PATH"
 COPY requirements.txt requirements.txt
 RUN python -m venv /tmp/venv && pip install -r requirements.txt
 
-FROM cgr.dev/chainguard/python:latest
+FROM ghcr.io/build-trust/ockam-python:latest
 
 WORKDIR /app
 
