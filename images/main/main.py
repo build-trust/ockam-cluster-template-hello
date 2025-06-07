@@ -1,4 +1,4 @@
-from ockam import Agent, Node
+from ockam import Agent, Node, Repl
 from sys import argv
 
 
