@@ -1,10 +1,7 @@
 name: hello
 pods:
   - name: main-pod
+    public: true
     containers:
       - name: main
         image: main
-        args: [localhost:9000]
-    portals:
-      outlets:
-        - to: localhost:9000
