@@ -1,8 +1,10 @@
-from ockam import Agent, Node
+from ockam import Agent, Node, Repl
+from sys import argv
 
 
 async def main(node):
-    await Agent.start(node, "You are Jack Sparrow", "jack")
+    agent = await Agent.start(node, "You are Jack Sparrow.", "jack")
+    await Repl.start(agent, argv[1])
 
 
 Node.start(main)
